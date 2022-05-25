@@ -15,23 +15,36 @@
 import random
 
 IMG_EXTENSIONS = [
-  '.jpg', '.JPG', '.jpeg', '.JPEG',
-  '.png', '.PNG', '.ppm', '.PPM', '.bmp', '.BMP', '.tiff']
+    ".jpg",
+    ".JPG",
+    ".jpeg",
+    ".JPEG",
+    ".png",
+    ".PNG",
+    ".ppm",
+    ".PPM",
+    ".bmp",
+    ".BMP",
+    ".tiff",
+]
+
+
 def image_file(filenames):
-  out = []
-  for name in filenames:
-    if any(name.endswith(extension) for extension in IMG_EXTENSIONS):
-      out.append(name)
-  return out
+    out = []
+    for name in filenames:
+        if any(name.endswith(extension) for extension in IMG_EXTENSIONS):
+            out.append(name)
+    return out
+
 
 def get_crop_params(img_size, output_size):
-  w = img_size[1]
-  h = img_size[0]
-  tw = output_size[1]
-  th = output_size[0]
-  if w == tw and h == th:
-    return 0, 0, h, w
- 
-  i = random.randint(0, h - th)
-  j = random.randint(0, w - tw)
-  return (i, j, th, tw)
+    w = img_size[1]
+    h = img_size[0]
+    tw = output_size[1]
+    th = output_size[0]
+    if w == tw and h == th:
+        return 0, 0, h, w
+
+    i = random.randint(0, h - th)
+    j = random.randint(0, w - tw)
+    return (i, j, th, tw)

@@ -22,27 +22,28 @@ from . import html
 import scipy.misc
 from io import BytesIO
 
+
 def save_images(webpage, visuals, image_path, win_size=512):
-  image_dir = webpage.get_image_dir()
-  short_path = ntpath.basename(image_path[0])
-  name = os.path.splitext(short_path)[0]
+    image_dir = webpage.get_image_dir()
+    short_path = ntpath.basename(image_path[0])
+    name = os.path.splitext(short_path)[0]
 
-  webpage.add_header(name)
-  ims = []
-  txts = []
-  links = []
+    webpage.add_header(name)
+    ims = []
+    txts = []
+    links = []
 
-  for label, image_numpy in visuals.items():
-    if label.startswith('output'):
-      fulllabel = label
-      label = 'output'
-    else:
-      fulllabel = label
-    image_name = '%s_%s.jpg' % (name, label)
-    save_path = os.path.join(image_dir, image_name)
-    util.save_image(image_numpy, save_path)
+    for label, image_numpy in visuals.items():
+        if label.startswith("output"):
+            fulllabel = label
+            label = "output"
+        else:
+            fulllabel = label
+        image_name = "%s_%s.jpg" % (name, label)
+        save_path = os.path.join(image_dir, image_name)
+        util.save_image(image_numpy, save_path)
 
-    ims.append(image_name)
-    txts.append(fulllabel)
-    links.append(image_name)
-  webpage.add_images(ims, txts, links, width=win_size)
+        ims.append(image_name)
+        txts.append(fulllabel)
+        links.append(image_name)
+    webpage.add_images(ims, txts, links, width=win_size)
