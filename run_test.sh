@@ -13,27 +13,28 @@
 # limitations under the License.
 # ==============================================================================
 
-GPU=6
+GPU=0
 EP=60
 
 #clevr
-DATAROOT=../datasets/Clevr
-CROPSIZE=192,144
-NAME=clevr
+#DATAROOT=../datasets/Clevr
+#CROPSIZE=192,144
+#NAME=clevr
+#OP=adaroute
+#BLOCK=1
+#T=1
+#PRETRAIN=clevr_recon
+#N_LAYER=2
+
+# codraw
+DATAROOT=../datasets/CoDraw
+CROPSIZE=160,128
+NAME=codraw
 OP=adaroute
 BLOCK=1
 T=1
-PRETRAIN=clevr_recon
+PRETRAIN=codraw_recon
 N_LAYER=2
 
-# codraw
-# DATAROOT=../datasets/CoDraw
-# CROPSIZE=160,128
-# NAME=codraw
-# OP=adaroute
-# BLOCK=1
-# T=1
-# PRETRAIN=codraw_recon
-# N_LAYER=2
-
-CUDA_VISIBLE_DEVICES=$GPU python test.py --dataroot $DATAROOT --crop_size $CROPSIZE --name $NAME --operator $OP --which_epoch $EP --n_downsampling $N_LAYER --num_adablock $BLOCK --temperature $T
+#CUDA_VISIBLE_DEVICES=$GPU python test.py --dataroot $DATAROOT --crop_size $CROPSIZE --name $NAME --operator $OP --which_epoch $EP --n_downsampling $N_LAYER --num_adablock $BLOCK --temperature $T
+python test.py --dataroot $DATAROOT --crop_size $CROPSIZE --name $NAME --operator $OP --which_epoch $EP --n_downsampling $N_LAYER --num_adablock $BLOCK --temperature $T
