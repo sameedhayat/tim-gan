@@ -20,7 +20,7 @@ import torch.nn.functional as F
 
 class Adaptive_Routing(torch.nn.Module):
     def __init__(self, n_res, dim, text_dim, temperature=1.0):
-        super(AdaIN, self).__init__()
+        super(Adaptive_Routing, self).__init__()
         # layer1
         self.res = networks.ResBlocks(n_res, dim, "adain", "relu", pad_type="reflect")
         self.mlp = networks.MLP(
